@@ -76,12 +76,6 @@ export default {
     .get('https://www.moogleapi.com/api/v1/characters')
     .then(response => (this.characters = response.data));
   },
-
-  methods :{
-    displayGender() {
-      
-    }
-  }
 }
 </script>
 
