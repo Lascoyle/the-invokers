@@ -1,18 +1,21 @@
 <template>
   <section id="games">
       <template>
-        <v-card class="mx-auto d-flex pa-5" v-for="(game, index) in games" :key="index">
-          <v-img :src="game.picture" contain :aspect-ratio="1" height="200px" class="col-lg-4"></v-img>
-          <div class="col-lg-8">
-            <v-card-title>{{ game.title }}</v-card-title>
-  
-            <v-card-subtitle>{{ game.platform }}</v-card-subtitle>
-  
+        <v-card flat class="mx-auto d-flex pa-5" v-for="(game, index) in games" :key="index">
+          <v-img :src="game.picture" contain :aspect-ratio="1" height="200px" class="col-lg-4 ma-5"></v-img>
+          <v-spacer></v-spacer>
+          <div class="col-lg-7">
+            <v-card-title class="text-h4">{{ game.title }}<v-icon class="ml-2">mdi-disc</v-icon></v-card-title>
+
+            <v-card-subtitle class="text-h5">{{ game.platform }}</v-card-subtitle>
+            <v-card-subtitle>Released date : {{ game.releaseDate }}</v-card-subtitle>
+
+
             <v-card-actions>
               <v-btn color="orange lighten-2" text>Description</v-btn>
-  
+
               <v-spacer></v-spacer>
-  
+
               <v-btn icon @click="show = !show">
                 <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
               </v-btn>
