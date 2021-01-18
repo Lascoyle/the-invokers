@@ -16,13 +16,15 @@
               <v-list-item>
                 <v-list-item-content>
                     <v-list-item-title class="text-subtitle-2">Elemental Affinity :</v-list-item-title>
-                    <v-list-item-subtitle class="text-caption">{{ monster.elementalAffinity }}</v-list-item-subtitle>
+                    <v-list-item-subtitle v-if="monster.elementalAffinity === null || monster.elementalAffinity  === 'N/a'" class="text-caption">Unknown</v-list-item-subtitle>
+                    <v-list-item-subtitle v-else class="text-caption">{{ monster.elementalAffinity }}</v-list-item-subtitle>
                 </v-list-item-content>
               </v-list-item>
               <v-list-item>
                 <v-list-item-content>
                     <v-list-item-title  class="text-subtitle-2">Elemental Weakness :</v-list-item-title>
-                    <v-list-item-subtitle class="text-caption">{{ monster.elementalWeakness }}</v-list-item-subtitle>
+                    <v-list-item-subtitle v-if="monster.elementalWeakness === null || monster.elementalWeakness  === 'N/a'" class="text-caption">Unknown</v-list-item-subtitle>
+                    <v-list-item-subtitle v-else class="text-caption">{{ monster.elementalWeakness }}</v-list-item-subtitle>
                 </v-list-item-content>
               </v-list-item>
             </v-list-item-group>

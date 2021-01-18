@@ -2,8 +2,8 @@
     <nav>
         <!-- Top Navbar -->
         <v-app-bar app dark>
-            <v-btn text class="text-h5" @click="drawer = !drawer">
-                <span>The InvoKers</span>
+            <v-btn text class="text-h4" @click="drawer = !drawer">
+                <span class="nav-title">The // InvoKers</span>
             </v-btn>
           <v-spacer></v-spacer>
         </v-app-bar>
@@ -68,4 +68,11 @@ export default {
   scrollbar-color: rgba(34, 137, 163, 0.5) rgba(0, 0, 0, 0);
   scrollbar-width: thin;
 }
+
+.nav-title {
+    font-family: 'Imbue', 'serif';
+    text-transform: uppercase;
+}
+
+
 </style>
