@@ -29,6 +29,9 @@
                             <v-list-item-content>
                                 <v-list-item-title class="ml-5 pl-3 text-caption cyan--text">{{ game.title }}</v-list-item-title>
                             </v-list-item-content>
+                            <v-list-item-action>
+                                <v-img :src="game.picture" width="50"></v-img>
+                            </v-list-item-action>
                         </v-list-item>
                     </div>
                 </v-list-group>
