@@ -19,28 +19,31 @@
                     </v-list-item-content>
                 </v-list-item>
             </v-list>
-            <v-list color="cyan lighten-2">
+            <v-list light color="white lighten-2">
                 <v-list-group>
                     <template v-slot:activator>
-                         <v-list-item-title>Games List</v-list-item-title>
+                         <v-list-item-title class="cyan--text">Games List</v-list-item-title>
                     </template>
                     <div class="nav-scroller">
                         <v-list-item v-for="(game, index) in games" :key="index" router :to="{path:'/game/' + game.gameId}">
                             <v-list-item-content>
-                                <v-list-item-title class="ml-5 pl-3 text-caption">{{ game.title }}</v-list-item-title>
+                                <v-list-item-title class="ml-5 pl-3 text-caption cyan--text">{{ game.title }}</v-list-item-title>
                             </v-list-item-content>
                         </v-list-item>
                     </div>
                 </v-list-group>
                 <v-list-group>
                     <template v-slot:activator>
-                         <v-list-item-title>Characters List</v-list-item-title>
+                         <v-list-item-title class="cyan--text">Characters List</v-list-item-title>
                     </template>
                     <div class="nav-scroller">
                         <v-list-item v-for="(character, index) in characters" :key="index" router :to="{path:'/character/' + character.id}">
                             <v-list-item-content>
-                                <v-list-item-title class="ml-5 pl-3 text-caption">{{ character.name }}</v-list-item-title>
+                                <v-list-item-title class="ml-5 pl-3 text-caption cyan--text">{{ character.name }}</v-list-item-title>
                             </v-list-item-content>
+                            <v-list-item-action>
+                                <v-img v-for="(picture, index) in character.pictures" :key="index" :src="picture.url" width="1"></v-img>
+                            </v-list-item-action>
                         </v-list-item>
                     </div>
                 </v-list-group>

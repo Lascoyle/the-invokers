@@ -1,10 +1,10 @@
 <template>
     <section id="current-game" class="px-5 mt-md-5 pa-md-5">
         <div id="current-game-resume" class="d-flex align-center">
-            <v-img v-for="(picture, index) in currentCharacter.pictures" :key="index" :src="picture.url" width="40vw" contain :aspect-ratio="1" ></v-img>
-            <div class="character-content">
-                <h2 class="character-name text-h3">{{ this.currentCharacter.name }}</h2>
-                <p class="character-description">{{ this.currentCharacter.description }}</p>
+            <v-img v-for="(picture, index) in currentCharacter.pictures" :key="index" :src="picture.url" width="40vw" contain :aspect-ratio="1" class="character-image pa-5" ></v-img>
+            <div class="character-content ma-5 pa-5">
+                <h2 class="character-name text-h3">{{ this.currentCharacter.name }} // <span class="character-japanese-name" v-if="currentCharacter.japaneseName != null">{{ currentCharacter.japaneseName }}</span></h2>
+                <p class="character-description ma-5">{{ this.currentCharacter.description }}</p>
             </div>
         </div>
         <div id="current-game-characters">
@@ -20,7 +20,7 @@ export default {
     data() {
         return {
             id: this.$route.params.id,
-            currentCharacter: Object
+            currentCharacter: {}
         }
     },
 
