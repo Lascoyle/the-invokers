@@ -7,7 +7,20 @@
       <v-row>
         <v-card class="col-12 col-sm-6 col-md-4 col-lg-3" v-for="(character, index) in characters" :key="index">
           <v-container class="mt-5 d-flex flex-column">
-            <v-img v-for="(picture, index) in character.pictures" :key="index" :src="picture.url" width="40%" contain :aspect-ratio="1" class="block align-self-end"></v-img>
+            <v-img v-for="(picture, index) in character.pictures" :key="index" :src="picture.url" width="40%" contain :aspect-ratio="1" class="block align-self-end">
+              <template v-slot:placeholder>
+                <v-row
+                  class="fill-height ma-0"
+                  align="center"
+                  justify="center"
+                >
+                  <v-progress-circular
+                    indeterminate
+                    color="cyan lighten-5"
+                  ></v-progress-circular>
+                </v-row>
+              </template>
+            </v-img>
             <v-card-title class="text-h4 mt-5"><span>{{ character.name }}</span><span v-if="character.japaneseName != null" class="ml-3 text-subtitle-2"> // {{ character.japaneseName }}</span></v-card-title>
             <v-card-subtitle>{{ character.origin }}</v-card-subtitle>
             <v-card-text class="scroller">

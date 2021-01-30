@@ -98,5 +98,4 @@ export default {
     text-transform: uppercase;
 }
 
-
 </style>
