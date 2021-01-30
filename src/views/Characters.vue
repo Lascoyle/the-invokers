@@ -1,17 +1,20 @@
 <template>
   <section id="characters" class="mt-4">
+      <div v-if="loader.state === true" class="loader-content d-flex align-center justify-space-between cyan--text text-h4">
+        <div class="loader-bar"></div>
+        <p class="loader-message">{{ loader.message }}</p>
+      </div>
       <v-row>
         <v-card class="col-12 col-sm-6 col-md-4 col-lg-3" v-for="(character, index) in characters" :key="index">
           <v-container class="mt-5 d-flex flex-column">
             <v-img v-for="(picture, index) in character.pictures" :key="index" :src="picture.url" width="40%" contain :aspect-ratio="1" class="block align-self-end"></v-img>
-            <!-- <p v-for="(picture, index) in character.pictures" :key="index">{{ picture.url }}</p> -->
             <v-card-title class="text-h4 mt-5"><span>{{ character.name }}</span><span v-if="character.japaneseName != null" class="ml-3 text-subtitle-2"> // {{ character.japaneseName }}</span></v-card-title>
             <v-card-subtitle>{{ character.origin }}</v-card-subtitle>
             <v-card-text class="scroller">
               {{ character.description ? character.description : "This character does not have a description yet. A full description will be added soon, so meanwhile keep connected for reading all the available content!"  }}
             </v-card-text>
           </v-container>
-          <v-list class="text-right mx-3">
+          <v-list disabled class="text-right mx-3 rounded-0">
             <v-list-item-group>
               <v-list-item>
                 Gender :
@@ -67,14 +70,22 @@ export default {
   data() {
     return {
       characters: [],
-      colors: ['blue', 'pink', 'purple']
+      colors: ['blue', 'pink', 'purple'],
+      loader: {
+        state: true,
+        message: "Please wait, the caracters will be displayed in few seconds... :)"
+      }
     }
   },
 
   mounted() {
     axios
-    .get('https://www.moogleapi.com/api/v1/characters')
-    .then(response => (this.characters = response.data));
+    .get('https://www.moogleapi.com/api/v1/characters', {
+      onDownloadProgress: () => {
+        this.loader = true
+      }
+    })
+    .then(response => {this.characters = response.data});
   },
 }
 </script>
@@ -85,5 +96,28 @@ export default {
   overflow-y: scroll;
   scrollbar-color: lightgray rgba(0, 0, 0, 0);
   scrollbar-width: thin;
+}
+
+.loader-content {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 75%;
+}
+
+.loader-bar {
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid #26c6da;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 </style>

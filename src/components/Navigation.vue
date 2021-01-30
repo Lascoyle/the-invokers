@@ -1,11 +1,10 @@
 <template>
     <nav>
         <!-- Top Navbar -->
-        <v-app-bar app dark>
+        <v-app-bar app dark width="100%">
             <v-btn text class="text-h4" @click="drawer = !drawer">
                 <span class="nav-title">The // InvoKers</span>
             </v-btn>
-          <v-spacer></v-spacer>
         </v-app-bar>
 
         <!-- Sliding Navigation-->
@@ -23,7 +22,7 @@
             <v-list color="cyan lighten-2">
                 <v-list-group>
                     <div class="nav-scroller">
-                        <v-list-item v-for="(game, index) in games" :key="index">
+                        <v-list-item v-for="(game, index) in games" :key="index" router :to="{path:'/game/' + game.gameId}">
                             <v-list-item-content>
                                 <v-list-item-title class="ml-5 pl-3 text-caption">{{ game.title }}</v-list-item-title>
                             </v-list-item-content>
