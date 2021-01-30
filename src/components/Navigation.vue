@@ -32,6 +32,18 @@
                         </v-list-item>
                     </div>
                 </v-list-group>
+                <v-list-group>
+                    <template v-slot:activator>
+                         <v-list-item-title>Characters List</v-list-item-title>
+                    </template>
+                    <div class="nav-scroller">
+                        <v-list-item v-for="(character, index) in characters" :key="index" router :to="{path:'/character/' + character.id}">
+                            <v-list-item-content>
+                                <v-list-item-title class="ml-5 pl-3 text-caption">{{ character.name }}</v-list-item-title>
+                            </v-list-item-content>
+                        </v-list-item>
+                    </div>
+                </v-list-group>
             </v-list>
         </v-navigation-drawer>
 </nav>
@@ -51,7 +63,8 @@ export default {
                 {name: 'Monsters', route: '/monsters', icon: "mdi-human-queue" },
             ],
             drawer: false,
-            games: []
+            games: [],
+            characters: []
         }
     },
 
@@ -59,13 +72,16 @@ export default {
     axios
     .get('https://www.moogleapi.com/api/v1/games')
     .then(response => (this.games = response.data));
+    axios
+    .get('https://www.moogleapi.com/api/v1/characters')
+    .then(res => (this.characters = res.data));
   },
 }
 </script>
 
 <style>
 .nav-scroller {
-  height: 25vh;
+  height: 57.2vh;
   overflow-y: scroll;
   scrollbar-color: rgba(34, 137, 163, 0.5) rgba(0, 0, 0, 0);
   scrollbar-width: thin;

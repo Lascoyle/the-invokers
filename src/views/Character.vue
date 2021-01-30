@@ -1,0 +1,45 @@
+<template>
+    <section id="current-game" class="px-5 mt-md-5 pa-md-5">
+        <div id="current-game-resume" class="d-flex align-center">
+            <v-img v-for="(picture, index) in currentCharacter.pictures" :key="index" :src="picture.url" width="40vw" contain :aspect-ratio="1" ></v-img>
+            <div class="character-content">
+                <h2 class="character-name text-h3">{{ this.currentCharacter.name }}</h2>
+                <p class="character-description">{{ this.currentCharacter.description }}</p>
+            </div>
+        </div>
+        <div id="current-game-characters">
+
+        </div>
+    </section>
+</template>
+<script>
+import axios from 'axios'
+
+export default {
+    name: 'Character',
+    data() {
+        return {
+            id: this.$route.params.id,
+            currentCharacter: Object
+        }
+    },
+
+    mounted() {
+        this.id = this.$route.params.id
+        axios
+        .get(`https://www.moogleapi.com/api/v1/characters/${this.id}`)
+        .then(response => (this.currentCharacter = response.data[0], console.log(this.currentCharacter)))
+    },
+
+    updated() {
+        this.id = this.$route.params.id
+        axios
+        .get(`https://www.moogleapi.com/api/v1/characters/${this.id}`)
+        .then(response => (this.currentCharacter = response.data[0]))
+    }
+}
+</script>
+
+<style>
+
+</style>

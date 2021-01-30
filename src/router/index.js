@@ -5,6 +5,7 @@ import Games from '../views/Games.vue'
 import Characters from '../views/Characters.vue'
 import Monsters from '../views/Monsters'
 import Game from '../views/Game.vue'
+import Character from '../views/Character.vue'
 
 Vue.use(VueRouter)
 
@@ -28,6 +29,11 @@ const routes = [
     path: '/characters',
     name: 'Characters',
     component: Characters
+  },
+  {
+    path: '/character/:id',
+    name: 'Character',
+    component: Character
   },
   {
     path: '/monsters',
