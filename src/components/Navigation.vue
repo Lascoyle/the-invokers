@@ -21,6 +21,9 @@
             </v-list>
             <v-list color="cyan lighten-2">
                 <v-list-group>
+                    <template v-slot:activator>
+                         <v-list-item-title>Games List</v-list-item-title>
+                    </template>
                     <div class="nav-scroller">
                         <v-list-item v-for="(game, index) in games" :key="index" router :to="{path:'/game/' + game.gameId}">
                             <v-list-item-content>
@@ -62,7 +65,7 @@ export default {
 
 <style>
 .nav-scroller {
-  height: 478px;
+  height: 25vh;
   overflow-y: scroll;
   scrollbar-color: rgba(34, 137, 163, 0.5) rgba(0, 0, 0, 0);
   scrollbar-width: thin;

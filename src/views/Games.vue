@@ -12,6 +12,8 @@
 
 
             <v-card-actions>
+              <v-btn color="cyan ligthen-1" text router :to="{path:'/game/' + game.gameId}">Have more informations about</v-btn>
+
               <v-btn color="orange lighten-2" text>Description</v-btn>
 
               <v-spacer></v-spacer>
