@@ -8,7 +8,7 @@
         </v-app-bar>
 
         <!-- Sliding Navigation-->
-        <v-navigation-drawer app dark temporary width="250" color="cyan lighten-1" v-model="drawer">
+        <v-navigation-drawer app dark temporary width="280" color="cyan lighten-1" v-model="drawer">
             <v-list>
                 <v-list-item v-for="(link, index) in links" :key="index" router :to="link.route">
                     <v-list-item-action>
@@ -27,10 +27,23 @@
                     <div class="nav-scroller">
                         <v-list-item v-for="(game, index) in games" :key="index" router :to="{path:'/game/' + game.gameId}">
                             <v-list-item-content>
-                                <v-list-item-title class="ml-5 pl-3 text-caption cyan--text">{{ game.title }}</v-list-item-title>
+                                <v-list-item-title class="ml-5 text-caption cyan--text">{{ game.title }}</v-list-item-title>
                             </v-list-item-content>
                             <v-list-item-action>
-                                <v-img :src="game.picture" width="50"></v-img>
+                                <v-img :src="game.picture" width="50">
+                                    <template v-slot:placeholder>
+                                        <v-row
+                                        class="fill-height ma-0"
+                                        align="center"
+                                        justify="center"
+                                        >
+                                        <v-progress-circular
+                                            indeterminate
+                                            color="cyan lighten-5"
+                                        ></v-progress-circular>
+                                        </v-row>
+                                    </template>
+                                </v-img>
                             </v-list-item-action>
                         </v-list-item>
                     </div>
@@ -45,7 +58,20 @@
                                 <v-list-item-title class="ml-5 pl-3 text-caption cyan--text">{{ character.name }}</v-list-item-title>
                             </v-list-item-content>
                             <v-list-item-action>
-                                <v-img v-for="(picture, index) in character.pictures" :key="index" :src="picture.url" width="1"></v-img>
+                                <v-img v-for="(picture, index) in character.pictures" :key="index" :src="picture.url" width="1">
+                                    <template v-slot:placeholder>
+                                        <v-row
+                                        class="fill-height ma-0"
+                                        align="center"
+                                        justify="center"
+                                        >
+                                        <v-progress-circular
+                                            indeterminate
+                                            color="cyan lighten-4"
+                                        ></v-progress-circular>
+                                        </v-row>
+                                    </template>
+                                </v-img>
                             </v-list-item-action>
                         </v-list-item>
                     </div>
