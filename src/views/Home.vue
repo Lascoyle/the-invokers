@@ -15,15 +15,15 @@
     </v-parallax>
     <template>
       <v-carousel hide-delimiters cycle interval="6000">
-        <v-carousel-item v-for="(slide,index) in slides" :key="index">
-          <v-sheet :color="colors[index]" height="100%" class="d-flex align-sm-center mt-5 pt-5 mt-sm-0 pt-sm-0">
-            <v-layout class="d-flex flex-column flex-sm-row justify-center mt-5 pt-5 mt-sm-0 pt-sm-0">
+        <v-carousel-item v-for="(slide,index) in slides" :key="index" class="home-carousel">
+          <v-sheet :color="colors[index]" height="100%" class="home-carousel-sheet d-flex align-sm-center pt-5 mt-sm-0 pt-sm-0">
+            <v-layout class="home-carousel-layout d-flex flex-column flex-sm-row justify-center mt-5 pt-5 mt-sm-0 pt-sm-0">
               <v-img :src="slide.src" class="col-12 col-sm-5 carousel-img pa-5" :aspect-ratio="16/9"></v-img>
-              <div class="ml-5 col-11 col-sm-5">
-                <v-btn text class="text-md-h5 text-lg-h4 my-5 pa-0" router :to="slide.route">Learn more about the //<strong>{{ slide.title }}</strong></v-btn>
+              <div class="pa-1 pa-sm-5 col-11 col-sm-5 home-carousel-text">
+                <v-btn text class="text-md-h5 text-lg-h4 my-5 pa-0 home-carousel-link" router :to="slide.route">Learn more about the //<strong>{{ slide.title }}</strong></v-btn>
                 <h3 class="text-md-h5 mb-5 ml-3">{{ slide.subtitle }}</h3>
                 <v-divider class="mb-5"></v-divider>
-                <p class="text-caption text-md-subtitle-2 text-lg-body-1 ml-3 font-weight-light">
+                <p class="home-carousel-paragraph text-caption text-md-subtitle-2 text-lg-body-1 ml-3 font-weight-light">
                   {{ slide.infos }}
                 </p>
               </div>
@@ -99,11 +99,22 @@ export default {
  margin-top: 8rem!important;
 }
 
+
+
 .carousel-img {
   display: block;
 }
 
-@media screen and (min-width: 600px) and (max-width: 960px) {
+.home-carousel-text {
+  position: absolute;
+  max-width: 80%!important;
+  background: rgba(3, 3, 3, 0.363);
+  max-width: 100vw!important;
+  right: 0;
+}
+
+
+@media screen and (min-width: 600px) {
     .home-title {
         font-size: 5rem
     }
@@ -111,15 +122,27 @@ export default {
     .mirror {
       line-height: 60px;
     }
+
+    .home-carousel-text {
+      position: initial;
+    }
 }
 
-@media screen and (min-width: 960px) and (max-width: 1264px) {
+@media screen and (min-width: 960px) {
     .home-title {
         font-size: 6.5rem;
     }
 
     .mirror {
       line-height: 80px;
+    }
+
+    .carousel-img {
+      box-shadow: 7px 7px 7px rgba(0, 0, 0, 0.514);
+    }
+
+    .home-carousel-text {
+      background: none;
     }
 }
 
