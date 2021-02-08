@@ -1,9 +1,9 @@
 <template>
     <section id="current-game" class="px-5 mt-md-5 pa-md-5">
-        <div id="current-game-resume" class="d-flex align-center">
+        <div id="current-game-resume" class="d-flex flex-column flex-sm-row align-center">
             <v-img v-for="(picture, index) in currentCharacter.pictures" :key="index" :src="picture.url" width="40vw" contain :aspect-ratio="1" class="character-image pa-5" ></v-img>
-            <div class="character-content ma-5 pa-5">
-                <h2 class="character-name text-h3">{{ this.currentCharacter.name }} <span class="character-japanese-name" v-if="currentCharacter.japaneseName != null">{{ currentCharacter.japaneseName }}</span></h2>
+            <div class="character-content ma-3 mt-5 ma-md-5 pa-md-5">
+                <h2 class="character-name text-md-h4 text-lg-h3">{{ this.currentCharacter.name }} <span class="character-japanese-name" v-if="currentCharacter.japaneseName != null">{{ currentCharacter.japaneseName }}</span></h2>
                 <p class="character-description ma-5">{{ this.currentCharacter.description }}</p>
             </div>
         </div>
